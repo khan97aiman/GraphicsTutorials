@@ -12,9 +12,9 @@ Mesh* Mesh::GenerateTriangle() {
 	m->vertices[2] = Vector3(-0.5f, -0.5f, 0.0f);
 
 	m->colours = new Vector4[m->numVertices];
-	m->colours[0] = Vector4(1.0f, 0.0f, 0.0f, 0.0f);
-	m->colours[1] = Vector4(0.0f, 1.0f, 0.0f, 0.0f);
-	m->colours[2] = Vector4(0.0f, 0.0f, 1.0f, 0.0f);
+	m->colours[0] = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+	m->colours[1] = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
+	m->colours[2] = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
 
 	m->BufferData();
 	return m;
