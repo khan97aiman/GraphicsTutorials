@@ -32,10 +32,10 @@ void Renderer::UpdateScene(float dt) {
 	viewMatrix = camera->BuildViewMatrix();
 }
 void Renderer::RenderScene() {
+	glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	BindShader(matrixShader);
-	glUniformMatrix4fv(glGetUniformLocation(matrixShader->GetProgram(), "projMatrix"), 1, false, projMatrix.values);
-	glUniformMatrix4fv(glGetUniformLocation(matrixShader->GetProgram(), "viewMatrix"), 1, false, viewMatrix.values);
+	
 	for (int i = 0; i < 3; ++i) {
 		Vector3 tempPos = position;
 		tempPos.z += (i * 500.0f);
@@ -44,8 +44,7 @@ void Renderer::RenderScene() {
 		modelMatrix  =	Matrix4::Translation(tempPos) *
 						Matrix4::Rotation(rotation, Vector3(0, 1, 0)) *
 						Matrix4::Scale(Vector3(scale, scale, scale));
-		glUniformMatrix4fv(glGetUniformLocation(
-		matrixShader->GetProgram(), "modelMatrix"), 1, false, modelMatrix.values);
+		UpdateShaderMatrices();
 		triangle->Draw();
 	}
 }
