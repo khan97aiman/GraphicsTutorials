@@ -45,6 +45,8 @@ public:
 	//Sets the scale vector (floats 1,5, and 10)
 	void	SetScalingVector(const Vector3 &in);
 
+	static Matrix4 Identity();
+
 	//Creates a rotation matrix that rotates by 'degrees' around the 'axis'
 	//Analogous to glRotatef
 	static Matrix4 Rotation(float degrees, const Vector3 &axis);

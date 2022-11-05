@@ -46,6 +46,15 @@ void	Matrix4::SetScalingVector(const Vector3 &in) {
 	values[10] = in.z;		
 }
 
+Matrix4 Matrix4::Identity() {
+	Matrix4 m;
+	m.values[0] = 1.0f;
+	m.values[5] = 1.0f;
+	m.values[10] = 1.0f;
+	m.values[15] = 1.0f;
+	return m;
+}
+
 Matrix4 Matrix4::Perspective(float znear, float zfar, float aspect, float fov) {
 	Matrix4 m;
 
