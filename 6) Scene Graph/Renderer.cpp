@@ -10,7 +10,7 @@ Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 	}
 	projMatrix = Matrix4::Perspective(1.0f, 10000.0f, (float)width / (float)height, 45.0f);
 	camera->SetPosition(Vector3(0, 30, 175));
-	root = new SceneNode();
+	root = new SceneGraphNode();
 	root->AddChild(new CubeRobot(cube));
 	glEnable(GL_DEPTH_TEST);
 	init = true;
@@ -36,7 +36,7 @@ void Renderer::RenderScene() {
 	DrawNode(root);
 }
 
-void Renderer::DrawNode(SceneNode* n) {
+void Renderer::DrawNode(SceneGraphNode* n) {
 	if (n->GetMesh()) {
 		Matrix4 model = n->GetWorldTransform() * Matrix4::Scale(n->GetModelScale());
 		glUniformMatrix4fv(glGetUniformLocation(shader->GetProgram(), "modelMatrix"), 1, false, model.values);
@@ -44,7 +44,7 @@ void Renderer::DrawNode(SceneNode* n) {
 		glUniform1i(glGetUniformLocation(shader->GetProgram(), "useTexture"), 0); //Next tutorial ;)
 		n->Draw(*this);
 	}
-	for (vector <SceneNode*>::const_iterator
+	for (vector <SceneGraphNode*>::const_iterator
 		i = n->GetChildIteratorStart();
 		i != n->GetChildIteratorEnd(); ++i) {
 		DrawNode(*i);

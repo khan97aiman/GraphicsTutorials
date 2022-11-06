@@ -19,7 +19,7 @@ void Frustum::FromMatrix(const Matrix4& mvp) {
     planes[5] = Plane(waxis - zaxis, (mvp.values[15] - mvp.values[14]), true);
 }
 
-bool Frustum::InsideFrustum(SceneNode& n) {
+bool Frustum::InsideFrustum(SceneGraphNode& n) {
     for (int p = 0; p < 6; ++p) {
         if (!planes[p].SphereInPlane(n.GetWorldTransform().
             GetPositionVector(), n.GetBoundingRadius())) {

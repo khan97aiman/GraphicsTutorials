@@ -1,6 +1,6 @@
 #pragma once
 #include "..\nclgl\OGLRenderer.h"
-#include <nclgl/SceneNode.h>
+#include <nclgl/SceneGraphNode.h>
 #include <nclgl/Camera.h>
 #include <nclgl/Frustum.h>
 
@@ -11,19 +11,19 @@ public:
 	void UpdateScene(float msec) override;
 	void RenderScene() override;
 protected:
-	void BuildNodeLists(SceneNode * from);
+	void BuildNodeLists(SceneGraphNode * from);
 	void SortNodeLists();
 	void ClearNodeLists();
 	void DrawNodes();
-	void DrawNode(SceneNode * n);
-	SceneNode * root;
+	void DrawNode(SceneGraphNode * n);
+	SceneGraphNode * root;
 	Camera * camera;
 	Mesh * quad;
 	Mesh * cube;
 	Shader * shader;
 	GLuint texture;
 	Frustum frameFrustum;
-	vector <SceneNode*> transparentNodeList;
-	vector <SceneNode*> nodeList;
+	vector <SceneGraphNode*> transparentNodeList;
+	vector <SceneGraphNode*> nodeList;
 };
 

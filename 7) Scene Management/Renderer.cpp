@@ -11,9 +11,9 @@ Renderer::Renderer(Window& parent) : OGLRenderer(parent) {
 	if (!shader->LoadSuccess() || !texture) {
 		return;
 	}
-	root = new SceneNode();
+	root = new SceneGraphNode();
 	for (int i = 0; i < 5; ++i) {
-		SceneNode * s = new SceneNode();
+		SceneGraphNode * s = new SceneGraphNode();
 		s->SetColour(Vector4(1.0f, 1.0f, 1.0f, 0.5f));
 		s->SetTransform(Matrix4::Translation(Vector3(0, 100.0f, -300.0f + 100.0f + 100 * i)));
 		s->SetModelScale(Vector3(100.0f, 100.0f, 100.0f));
@@ -46,7 +46,7 @@ void Renderer::UpdateScene(float dt) {
 	root->Update(dt);
 }
 
-void Renderer::BuildNodeLists(SceneNode* from) {
+void Renderer::BuildNodeLists(SceneGraphNode* from) {
 	if (frameFrustum.InsideFrustum(*from)) {
 		Vector3 dir = from->GetWorldTransform().GetPositionVector() - camera->GetPosition();
 		from->SetCameraDistance(Vector3::Dot(dir, dir));
@@ -57,14 +57,14 @@ void Renderer::BuildNodeLists(SceneNode* from) {
 			nodeList.push_back(from);
 		}
 	}
-	for (vector <SceneNode*>::const_iterator i = from->GetChildIteratorStart(); i != from->GetChildIteratorEnd(); ++i) {
+	for (vector <SceneGraphNode*>::const_iterator i = from->GetChildIteratorStart(); i != from->GetChildIteratorEnd(); ++i) {
 		BuildNodeLists((*i));
 	}
 }
 
 void Renderer::SortNodeLists() {
-	std::sort(transparentNodeList.rbegin(), transparentNodeList.rend(), SceneNode::CompareByCameraDistance);
-	std::sort(nodeList.begin(), nodeList.end(), SceneNode::CompareByCameraDistance);
+	std::sort(transparentNodeList.rbegin(), transparentNodeList.rend(), SceneGraphNode::CompareByCameraDistance);
+	std::sort(nodeList.begin(), nodeList.end(), SceneGraphNode::CompareByCameraDistance);
 }
 
 void Renderer::DrawNodes() {
@@ -76,7 +76,7 @@ void Renderer::DrawNodes() {
 	}
 }
 
-void Renderer::DrawNode(SceneNode* n) {
+void Renderer::DrawNode(SceneGraphNode* n) {
 	if (n->GetMesh()) {
 		Matrix4 model = n->GetWorldTransform() * Matrix4::Scale(n->GetModelScale());
 		glUniformMatrix4fv(glGetUniformLocation(shader->GetProgram(), "modelMatrix"), 1, false, model.values);

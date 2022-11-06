@@ -33,7 +33,7 @@
       <Filter>Windows and Input</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="SceneNode.cpp" />
+    <ClCompile Include="SceneGraphNode.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="Frustum.cpp" />
   </ItemGroup>
@@ -80,7 +80,7 @@
       <Filter>Windows and Input</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="SceneNode.h" />
+    <ClInclude Include="SceneGraphNode.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="Frustum.h" />
   </ItemGroup>

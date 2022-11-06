@@ -1,13 +1,13 @@
 #pragma once
 #include "Plane.h"
-#include "SceneNode.h"
+#include "SceneGraphNode.h"
 
 class Frustum {
 public:
 	Frustum(void) {};
 	~Frustum(void) {};
 	void FromMatrix(const Matrix4 & mvp);
-	bool InsideFrustum(SceneNode & n);
+	bool InsideFrustum(SceneGraphNode & n);
 protected:
 	Plane planes[6];
 };

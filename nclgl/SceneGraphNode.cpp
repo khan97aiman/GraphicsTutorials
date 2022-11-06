@@ -1,33 +1,33 @@
-#include "SceneNode.h"
+#include "SceneGraphNode.h"
 
-SceneNode::SceneNode(Mesh* m, Vector4 colour) {
+SceneGraphNode::SceneGraphNode(Mesh* m, Vector4 colour) {
 	this->mesh = m;
 	this->colour = colour;
 }
 
-SceneNode::~SceneNode(void) {
+SceneGraphNode::~SceneGraphNode(void) {
 	for (unsigned int i = 0; i < children.size(); ++i) {
 		delete children[i];
 	}
 }
 
-void SceneNode::AddChild(SceneNode* s) {
+void SceneGraphNode::AddChild(SceneGraphNode* s) {
 	children.push_back(s);
 	s->parent = this;
 }
 
-void SceneNode::Update(float dt) {
+void SceneGraphNode::Update(float dt) {
 	if (parent) { //This node has a parent ...
 		worldTransform = parent->worldTransform * transform;
 	}
 	else { //Root node , world transform is local transform!
 		worldTransform = transform;
 	}
-	for (vector <SceneNode*>::iterator i = children.begin(); i != children.end(); ++i) {
+	for (vector <SceneGraphNode*>::iterator i = children.begin(); i != children.end(); ++i) {
 		(*i)->Update(dt); 
 	}
 }
 
-void SceneNode::Draw(const OGLRenderer& r) {
+void SceneGraphNode::Draw(const OGLRenderer& r) {
 	if (mesh) { mesh->Draw(); }
 }

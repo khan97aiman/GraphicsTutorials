@@ -5,11 +5,11 @@
 #include "Mesh.h"
 #include <vector >
 
-class SceneNode {
+class SceneGraphNode {
 public:
-	SceneNode() = default;
-	SceneNode(Mesh * m, Vector4 colour);
-	~SceneNode(void);
+	SceneGraphNode() = default;
+	SceneGraphNode(Mesh * m, Vector4 colour);
+	~SceneGraphNode(void);
 	void SetTransform(const Matrix4 & matrix) { transform = matrix; }
 	const Matrix4 & GetTransform() const { return transform; }
 	Matrix4 GetWorldTransform() const { return worldTransform; }
@@ -19,11 +19,11 @@ public:
 	void SetModelScale(Vector3 s) { modelScale = s; }
 	Mesh * GetMesh() const { return mesh; }
 	void SetMesh(Mesh * m) { mesh = m; }
-	void AddChild(SceneNode * s);
+	void AddChild(SceneGraphNode * s);
 	virtual void Update(float dt);
 	virtual void Draw(const OGLRenderer & r);
-	std::vector <SceneNode*>::const_iterator GetChildIteratorStart() { return children.begin(); }
-	std::vector <SceneNode*>::const_iterator GetChildIteratorEnd() { return children.end(); }
+	std::vector <SceneGraphNode*>::const_iterator GetChildIteratorStart() { return children.begin(); }
+	std::vector <SceneGraphNode*>::const_iterator GetChildIteratorEnd() { return children.end(); }
 
 	float GetBoundingRadius() const { return boundingRadius; }
 	void SetBoundingRadius(float f) { boundingRadius = f; }
@@ -31,16 +31,16 @@ public:
 	void SetCameraDistance(float f) { distanceFromCamera = f; }
 	void SetTexture(GLuint tex) { texture = tex; }
 	GLuint GetTexture() const { return texture; }
-	static bool CompareByCameraDistance(SceneNode * a, SceneNode * b) { return (a->distanceFromCamera < b->distanceFromCamera) ? true : false; }
+	static bool CompareByCameraDistance(SceneGraphNode * a, SceneGraphNode * b) { return (a->distanceFromCamera < b->distanceFromCamera) ? true : false; }
 
 protected:
-	SceneNode * parent = NULL;
+	SceneGraphNode * parent = NULL;
 	Mesh * mesh = NULL;
 	Matrix4 worldTransform;
 	Matrix4 transform;
 	Vector3 modelScale = Vector3(1, 1, 1);
 	Vector4 colour = Vector4(1, 1, 1, 1);
-	std::vector <SceneNode*> children;
+	std::vector <SceneGraphNode*> children;
 
 	float distanceFromCamera = 0.0f;
 	float boundingRadius = 1.0f;
