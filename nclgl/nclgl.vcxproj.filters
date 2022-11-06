@@ -36,6 +36,24 @@
     <ClCompile Include="SceneGraphNode.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="Frustum.cpp" />
+    <ClCompile Include="SceneNode.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectNode.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="LightNode.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometryNode.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraNode.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionNode.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h" />
@@ -83,6 +101,24 @@
     <ClInclude Include="SceneGraphNode.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="Frustum.h" />
+    <ClInclude Include="SceneNode.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectNode.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="LightNode.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometryNode.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraNode.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionNode.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GLAD">
@@ -93,6 +129,9 @@
     </Filter>
     <Filter Include="Windows and Input">
       <UniqueIdentifier>{4a13117a-c481-4385-bd9e-1acd65146a21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{cf89663e-5137-4061-8b8f-450bfb493a02}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
