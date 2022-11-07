@@ -54,6 +54,10 @@
     <ClCompile Include="TransitionNode.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="BaseScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="HeightMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h" />
@@ -119,6 +123,10 @@
     <ClInclude Include="TransitionNode.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="BaseScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="HeightMap.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GLAD">

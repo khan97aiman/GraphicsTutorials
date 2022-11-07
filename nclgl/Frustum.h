@@ -1,6 +1,7 @@
 #pragma once
 #include "Plane.h"
 #include "SceneGraphNode.h"
+#include "GeometryNode.h"
 
 class Frustum {
 public:

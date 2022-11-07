@@ -20,12 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Third Party\glad\glad.c" />
+    <ClCompile Include="BaseScene.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraNode.cpp" />
     <ClCompile Include="ComputeShader.cpp" />
     <ClCompile Include="Frustum.cpp" />
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="GeometryNode.cpp" />
+    <ClCompile Include="HeightMap.cpp" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="LightNode.cpp" />
     <ClCompile Include="Matrix2.cpp" />
@@ -46,6 +48,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseScene.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraNode.h" />
     <ClInclude Include="common.h" />
@@ -53,6 +56,7 @@
     <ClInclude Include="Frustum.h" />
     <ClInclude Include="GameTimer.h" />
     <ClInclude Include="GeometryNode.h" />
+    <ClInclude Include="HeightMap.h" />
     <ClInclude Include="InputDevice.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="LightNode.h" />

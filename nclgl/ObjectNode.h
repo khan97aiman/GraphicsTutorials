@@ -2,7 +2,8 @@
 #include "SceneNode.h"
 #include "OGLRenderer.h"
 class ObjectNode : public SceneNode {
-public:(
+public:
+	ObjectNode() = default;
 	~ObjectNode();
 	void AddChild(ObjectNode* s);
 	std::vector <ObjectNode*>::const_iterator GetChildIteratorStart() { return children.begin(); }

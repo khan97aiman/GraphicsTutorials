@@ -137,10 +137,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BlankProject.cpp" />
-    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="CubeRobot.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="StainedGlass.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="CubeRobot.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="StainedGlass.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
